@@ -1,7 +1,5 @@
 from project.dao.models.base import BaseMixin
 from project.setup_db import db
-from project.dao.models.genre import GenreModel
-from project.dao.models.director import DirectorModel
 
 
 class MovieModel(BaseMixin, db.Model):

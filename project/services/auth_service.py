@@ -8,13 +8,22 @@ class AuthService:
         self.auth_dao = auth_dao
 
     def get_by_email(self, email):
+        """
+        Get user by email
+        """
         return self.auth_dao.get_user_by_email(email)
 
     def register(self, email: str, password: str) -> UserSchema:
+        """
+        User registration by email and password
+        """
         password_hash = get_hash_by_password(password)
         return self.auth_dao.create(email=email, password=password_hash)
 
     def login(self, email: str, password: str) -> dict:
+        """
+        User system validation by given data
+        """
         user = self.auth_dao.get_user_by_email(email=email)
         if user is None:
             raise Exception
@@ -24,4 +33,7 @@ class AuthService:
         return generate_tokens(user)
 
     def update_tokens(self, token):
+        """
+        Password editor
+        """
         return generate_new_tokens(token)

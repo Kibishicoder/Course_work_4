@@ -13,4 +13,7 @@ class GenreDAO:
         return self.session.query(GenreModel).all()
 
     def get_all_by_page(self, page):
-        return self.session.query(GenreModel).limit(BaseConfig.ITEMS_PER_PAGE).offset(BaseConfig.ITEMS_PER_PAGE * page - BaseConfig.ITEMS_PER_PAGE)
+        return self.session.query(GenreModel).limit(
+            BaseConfig.ITEMS_PER_PAGE).offset(
+            BaseConfig.ITEMS_PER_PAGE * page -
+            BaseConfig.ITEMS_PER_PAGE)

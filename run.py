@@ -1,6 +1,6 @@
 from project.config import DevelopmentConfig
-from project.dao.models import Genre
 from project.server import create_app, db
+from project.dao.models import GenreModel
 
 app = create_app(DevelopmentConfig)
 
@@ -9,5 +9,5 @@ app = create_app(DevelopmentConfig)
 def shell():
     return {
         "db": db,
-        "Genre": Genre,
+        "Genre": GenreModel,
     }

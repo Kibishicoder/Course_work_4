@@ -5,6 +5,8 @@ from flask import request
 from flask_restx import abort
 from project.config import BaseConfig
 import jwt
+
+from project.exceptions import InvalidTokens
 from project.schemas.user import UserSchema
 from datetime import datetime, timedelta
 
@@ -64,7 +66,7 @@ def decode_token(token: str):
             key=BaseConfig.SECRET_KEY,
             algorithms=[BaseConfig.JWT_ALGO]
             )
-    except Exception:
+    except InvalidTokens:
         abort(401)
     return decoded_token
 
@@ -97,7 +99,7 @@ def auth_required(func):
                 key=BaseConfig.SECRET_KEY,
                 algorithms=[BaseConfig.JWT_ALGO]
             )
-        except Exception:
+        except InvalidTokens:
             abort(401)
         return func(*args, **kwargs)
     return wrapper

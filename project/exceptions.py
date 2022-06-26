@@ -18,7 +18,7 @@ class UserNotFound(Exception):
     ...
 
 
-class FaildCangeTokens(Exception):
+class TokensChangeFailed(Exception):
     ...
 
 
@@ -26,5 +26,5 @@ class InvalidTokens(Exception):
     ...
 
 
-class UncorrectData(Exception):
+class IncorrectData(Exception):
     ...

@@ -4,28 +4,27 @@ from project.exceptions import GenreNotFound
 from flask import request
 
 
-genres_ns = Namespace("genres")
+genres_ns = Namespace('genres')
 
 
-@genres_ns.route("/")
+@genres_ns.route('/')
 class GenresView(Resource):
-    @genres_ns.response(200, "OK")
+    @genres_ns.response(200, 'OK')
     def get(self):
         try:
-            page = request.args.get("page", type=int)
-            filter = {"page": page}
-            return genre_service.get_all_genres(filter)
+            page = request.args.get('page', type=int)
+            filters = {'page': page}
+            return genre_service.get_all_genres(filters)
         except GenreNotFound:
-            abort(404, message="Genres not found")
+            abort(404, message='Genres not found')
 
 
-@genres_ns.route("/<int:genre_id>")
+@genres_ns.route('/<int:genre_id>')
 class GenreView(Resource):
-    @genres_ns.response(200, "OK")
-    @genres_ns.response(404, "Genre not found")
+    @genres_ns.response(200, 'OK')
+    @genres_ns.response(404, 'Genre not found')
     def get(self, genre_id: int):
-        """Get genre by id"""
         try:
             return genre_service.get_item_by_id(genre_id)
         except GenreNotFound:
-            abort(404, message="Genre not found")
+            abort(404, message='Genre not found')

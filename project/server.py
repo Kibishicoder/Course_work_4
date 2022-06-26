@@ -14,7 +14,7 @@ api = Api(
     doc="/docs",
 )
 
-# Нужно для работы с фронтендом
+# Frontend connection
 cors = CORS()
 
 
@@ -30,7 +30,7 @@ def create_app(config_obj):
     db.init_app(app)
     api.init_app(app)
 
-    # Регистрация эндпоинтов
+    # Endpoint registration
     api.add_namespace(genres_ns)
     api.add_namespace(directors_ns)
     api.add_namespace(movies_ns)

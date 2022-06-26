@@ -17,6 +17,8 @@ class MovieDAO:
         return self.session.query(MovieModel).order_by(desc("year")).all()
 
     def get_all_by_page(self, page):
-        return self.session.query(MovieModel).limit(BaseConfig.ITEMS_PER_PAGE).offset(
-            BaseConfig.ITEMS_PER_PAGE * page - BaseConfig.ITEMS_PER_PAGE)
+        return self.session.query(MovieModel).limit(
+            BaseConfig.ITEMS_PER_PAGE).offset(
+            BaseConfig.ITEMS_PER_PAGE * page -
+            BaseConfig.ITEMS_PER_PAGE)
 

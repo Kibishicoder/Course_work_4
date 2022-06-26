@@ -1,6 +1,5 @@
 from project.setup_db import db
 from project.dao.models.base import BaseMixin
-from project.dao.models.genre import GenreModel
 
 
 class UserModel(BaseMixin, db.Model):
